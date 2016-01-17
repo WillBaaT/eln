@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>CHY Lab</title>
+		<meta name="Will" content="CHYLab" />
+		<link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+		<script src="/assets/application.js?body=1" type="text/javascript"></script>		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div id="tabs" class="tabs hometabs">
+			<header class="clearfix">
+				<h1 class="title-current">Post</h1>
+				<h1>Experimental Note</h1>
+				<h1>Person on Duty</h1>
+				<h1>Group Buying</h1>
+			</header>	
+				<nav>
+					<ul>
+						<li><a href="#section-1" class="icon-comment-o"><span>Post</span></a></li>
+						<li><a href="#section-2" class="icon-pencil"><span>Note</span></a></li>
+						<li><a href="#section-3" class="icon-recycle"><span>Duty</span></a></li>
+						<li><a href="#section-4" class="icon-credit-card"><span>Buying</span></a></li>
+						<!--<li><a href="#section-5" class="icon-cog"><span>Setting</span></a></li>-->
+					</ul>
+				</nav>
+				<div class="content">
+					<section id="section-1">
+  						<div class="container">
+  							<% @post.reverse_each do |p| %>
+    							<div class="message" >
+      								<p class="postcontent"><%= p.content %></p>
+      								<p class="posttime"><%= p.created_at.strftime("%B %d, %Y %H:%m") %></p>
+    							</div>
+    						<%end%>
+    						<%= link_to 'New Post', "newpost" %>
+  						</div>
+					</section>
+					<section id="section-2">
+						<div class="mediabox bigbtn">
+							<%= link_to "molecular" do %>
+							<div>
+							<%=image_tag("clone-s.svg",alt: "Clone")%>
+							</div>
+							<% end %>
+							<h3>Cloning and construction</h3>
+							<p>Readme.</p>
+						</div>
+						<div class="mediabox bigbtn">
+							<div>
+							<%=image_tag("arabidopsis-s.svg",alt: "Plant")%>
+							</div>
+							<h3>Arabidopsis</h3>
+							<p>Readme.</p>
+						</div>
+						<div class="mediabox bigbtn">
+							<div>
+							<%=image_tag("caculator-s.svg",alt: "Caculator")%>
+							</div>
+							<h3>Caculator</h3>
+							<p>Readme.</p>
+						</div>
+					</section>
+					<section id="section-3">
+						<div class="mediabox bigbtn">
+							<div>
+							<%=image_tag("caculator-s.svg",alt: "Caculator")%>
+							</div>
+							<h3>Arabidopsis</h3>
+							<p>Readme.</p>
+						</div>
+					</section>
+					<section id="section-4">
+						<div class="mediabox bigbtn">
+							<div>
+							<%=image_tag("caculator-s.svg",alt: "Caculator")%>
+							</div>
+							<h3>Cloning and construction</h3>
+							<p>Readme.</p>
+						</div>
+					</section>
+				</div><!-- /content -->
+			</div><!-- /tabs -->
+			<p class="info">2016/01/01 ver 1.0.0 Template by <a href="http://tympanus.net/codrops/" id>codrops</a><br><a href="https://www.facebook.com/groups/chylabfamily" class="icon-facebook-square">CHY family</a></p>
+		</div>
+		<script>
+		/**
+ * cbpFWTabs.js v1.0.0
+ * http://www.codrops.com
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * Copyright 2014, Codrops
+ * http://www.codrops.com
+ */
+;( function( window ) {
+	
+	'use strict';
+
+	function extend( a, b ) {
+		for( var key in b ) { 
+			if( b.hasOwnProperty( key ) ) {
+				a[key] = b[key];
+			}
+		}
+		return a;
+	}
+
+	function CBPFWTabs( el, options ) {
+		this.el = el;
+		this.options = extend( {}, this.options );
+  		extend( this.options, options );
+  		this._init();
+	}
+
+	CBPFWTabs.prototype.options = {
+		start : 0
+	};
+
+	CBPFWTabs.prototype._init = function() {
+		this.titles = [].slice.call( this.el.querySelectorAll( 'header > h1' ) );
+
+		// tabs elemes
+		this.tabs = [].slice.call( this.el.querySelectorAll( 'nav > ul > li' ) );
+		// content items
+		this.items = [].slice.call( this.el.querySelectorAll( '.content > section' ) );
+		// current index
+		this.current = -1;
+		// show current content item
+		this._show();
+		// init events
+		this._initEvents();
+	};
+
+	CBPFWTabs.prototype._initEvents = function() {
+		var self = this;
+		this.tabs.forEach( function( tab, idx ) {
+			tab.addEventListener( 'click', function( ev ) {
+				ev.preventDefault();
+				self._show( idx );
+			} );
+		} );
+	};
+
+	CBPFWTabs.prototype._show = function( idx ) {
+		if( this.current >= 0 ) {
+			this.titles[ this.current ].className = '';
+			this.tabs[ this.current ].className = '';
+			this.items[ this.current ].className = '';
+		}
+		// change current
+		this.current = idx != undefined ? idx : this.options.start >= 0 && this.options.start < this.items.length ? this.options.start : 0;
+		this.titles[ this.current ].className = 'title-current';
+		this.tabs[ this.current ].className = 'tab-current';
+		this.items[ this.current ].className = 'content-current';
+	};
+
+	// add to global namespace
+	window.CBPFWTabs = CBPFWTabs;
+
+})( window );
+		</script>
+		<script>
+			new CBPFWTabs( document.getElementById( 'tabs' ) );
+		</script>
+		
+	</body>
+</html>

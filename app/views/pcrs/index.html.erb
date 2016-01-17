@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		
+</head>
+<body>
+	<div class="container">
+		<div id="tabs" class="tabs notetabs">
+			<header class="clearfix">
+				<h1 class="title-current">PCR products</h1>
+			</header>
+			
+			<% @gene.each do |g| %>
+			<div class="gene">
+				<h2><%= g.name %></h2>
+				<% g.pcrs.each do |p| %>
+				<div class="pcr">
+				<div class="lable">
+					<p>Fragment:</p>	<br>
+					<p>Size:  	</p>	<br>
+				</div>
+				<div class="detail">
+					<p><%=p.fragment_name%></p><br>
+					<p><%=p.product_size%><%=" bp" unless p.product_size.nil?%></p><br>
+					<p><%=p.created_at.strftime("%H:%M %D")%></p>
+				</div>
+				<div class="edit">
+					<p><%= link_to "edit", edit_pcr_path(p) %></p>
+					<p><%= link_to "detail", pcr_path(p) %></p>
+					<br><br>	<br><br>
+				</div>
+				</div>
+				<%end%>
+			</div>				
+			<%end%>
+		</div>
+	</div>
+</body>
+<style>
+	.gene, .pcr{
+		overflow: auto;
+		margin:0 20px;
+	}
+	
+	.lable, .detail{
+		display:inline-block;
+		float: left;
+		max-width:40%;
+		margin: 5px 20px;
+	}
+	.edit{
+		display:inline-block;
+		margin: 5px 20px;
+		width: 100%;
+	}
+</style>
+</html>
