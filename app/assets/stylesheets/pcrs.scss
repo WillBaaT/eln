@@ -2,17 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 	
-@media screen and (max-width: 32em){
+.field_with_errors{
+	padding: 0;
+	width:100px;
+	display:inline;
+}
+.field_with_errors input{
+  	background-color: #f86558;
+}
+.err{
+	color: #f86558;
+}
 .short{
 	width: 40px;
 }
 
-.pcr_submit{
-	
-	}
-.field_with_errors {
-  padding: 5px;
-  background-color: red;
-  display: table;
-}
+
+@media screen and (max-width: 32em){
+
+
+
 }

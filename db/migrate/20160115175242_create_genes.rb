@@ -3,7 +3,7 @@ class CreateGenes < ActiveRecord::Migration
     create_table :genes do |t|
       t.string :species
       t.string :number
-      t.string :name
+      t.string :name	
       t.string :size
 
       t.timestamps null: false

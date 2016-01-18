@@ -1,3 +1,47 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post_text{
+	width:80%;
+	max-width: 615px;
+	margin: 10px;
+    height: 150px;
+}
+.new_post .submit{
+	width:37%;
+	max-width: 300px;
+	margin: 0 5px;
+}
+.new_post .cancel{
+	width:40%;
+	max-width: 300px;
+	margin: 0 5px;
+
+}
+.submit{
+	border-radius: 4px;
+	background-color: #599ab9; 
+    color: white; 
+	padding: 15px 32px;
+	-webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+.submit:hover {
+    background-color: #377897;
+}
+.cancel{
+	border-radius: 4px;
+	background-color: #f86558; 
+    color: white; 
+	padding: 15px 32px;
+	-webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+.cancel:hover {
+    background-color: #d64336;
+}
+
+    .err_message{
+      color: #f86558;
+    }

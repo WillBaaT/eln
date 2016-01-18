@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :posts
 
   get 'molecular' => 'functions#clones'
-  
   resources :pcrs
+  get 'genes/:id' => 'pcrs#geneshow'
+  get 'genesedit/:id' => 'pcrs#geneedit'
+  patch 'genes/:id' => 'pcrs#geneupdate'
   resources :ligations
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -13,37 +13,29 @@
 
   </head>
 <body>
-  <div class="container">
-  <header class="clearfix">
-        <h1 border="10px" class="clearfix">Post</h1>
-  </header>
+<div class="container">
+  <div id="tabs" class="tabs notetabs">
+    <header class="clearfix">
+    <h1 border="10px" class="title-current">New Post</h1>
+    </header>
+  </div>
 </div>
-<div class="create">
-  <div class="container" style="text-align:center">
-    <%= form_for(@post) do |f| %>
-      <div class="field">  
-        <%= f.text_area :content, :class => "post_text", :placeholder => '' %>
+<div class="container" style="text-align:center">
+  <%= form_for(@post) do |f| %>
+    <div class="new_post">  
+      <%= f.text_area :content, :class => "post_text", :placeholder => '' %>
         
-      </div>
-      <div class="actions"> 
-        <%= f.submit "Submit", :class => "post_button" %>
-        <%= f.button "Cancel", :type => "reset",  :class => "post_button"%>
-      </div> 
-    <%end%>
-    <p class = "err_message"><%= @post.errors.full_messages.first do |m| %><% end %></p>
+    </div>
+    <div class="actions"> 
+      <%= f.submit "Submit", :class => "submit" %>
+      <%= f.button "Cancel", :type => "reset",  :class => "cancel"%>
+    </div> 
+  <%end%>
+    <p class = "err_message">
+    <%= @post.errors.full_messages.first do |m| %><% end %></p>
+</div>
     <style>
-    .post_button{
-      height: 60px;
-      width: 40%;
-    }
-    .post_text{
-      margin: 10px;
-      height: 150px;
-      width: 80%;
-    }
-    .err_message{
-      color: #c52f24;
-    }
+    
     </style>
     <script>
     $(document).ready(function(){
@@ -51,7 +43,7 @@
         window.location.href="/";
         $("#section-2").addClass("content-current");
       });
-      $(".err_message").fadeOut("slow");
+      $(".err_message").fadeOut(2500);
     }); 
     </script>
   </div>

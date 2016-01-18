@@ -27,13 +27,24 @@ class PcrsController < ApplicationController
   def show
   	@pcr = Pcr.find(params[:id])
   end
+  def geneshow
+    @gene = Gene.find(params[:id])
+  end
   def edit
     @pcr = Pcr.find(params[:id])
+  end
+  def geneedit
+    @gene = Gene.find(params[:id])
   end
   def update
     @pcr = Pcr.find(params[:id])
     @pcr.update(pcr_params)
     redirect_to pcr_path(@pcr)
+  end
+  def geneupdate
+    @gene = Gene.find(params[:id])
+    @gene.update(gene_params)
+    redirect_to :action => :geneshow, :id => @gene
   end
   def destroy
     @pcr = Pcr.find(params[:id])
@@ -72,5 +83,13 @@ class PcrsController < ApplicationController
       :size,
       :_destroy]
   )
+  end
+  def gene_params
+    params.require(:gene).permit(
+      :id,
+      :species,
+      :number,
+      :name,
+      :size)
   end
 end

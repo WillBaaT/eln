@@ -12,23 +12,25 @@
 			
 			<% @gene.each do |g| %>
 			<div class="gene">
+				<%= link_to  :controller => 'pcrs', :action =>'geneshow', :id => g do%>
 				<h2><%= g.name %></h2>
+				<%end%>
 				<% g.pcrs.each do |p| %>
 				<div class="pcr">
-				<div class="lable">
-					<p>Fragment:</p>	<br>
-					<p>Size:  	</p>	<br>
-				</div>
-				<div class="detail">
-					<p><%=p.fragment_name%></p><br>
-					<p><%=p.product_size%><%=" bp" unless p.product_size.nil?%></p><br>
-					<p><%=p.created_at.strftime("%H:%M %D")%></p>
-				</div>
-				<div class="edit">
-					<p><%= link_to "edit", edit_pcr_path(p) %></p>
-					<p><%= link_to "detail", pcr_path(p) %></p>
-					<br><br>	<br><br>
-				</div>
+					<div class="label">
+						Fragment:	<br>
+						Size:  		<br>
+					</div>
+					<div class="detail">
+						<%=p.fragment_name%><br>
+						<%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
+						<p><%=p.created_at.strftime("%H:%M %D")%></p>
+					</div>
+					<div class="edit">
+						<%= link_to "edit", edit_pcr_path(p) %>
+						<%= link_to "detail", pcr_path(p) %>
+						<%= link_to "delete", pcr_path(p), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
+					</div>
 				</div>
 				<%end%>
 			</div>				
@@ -37,21 +39,38 @@
 	</div>
 </body>
 <style>
-	.gene, .pcr{
+	h2{
+		color: #599ab9;
+	}
+	h2:after{
+		content:"details";
+		font-size: 0.8em;
+		padding-left: 2px;
+		opacity:0;
+		transition: 0.2s;
+		position:relative;
+		right:10px;
+		bottom:2px;
+		color: #768e9d;
+	}
+	h2:hover:after{
+		opacity:1;
+		position:relative;
+		padding-left:15px;
+	}
+	.gene{
 		overflow: auto;
 		margin:0 20px;
+		width:300%;
+		white-space: nowrap;
+	}
+	.pcr{
+		display: inline;
+		left:0px;
+		width:100%;
 	}
 	
-	.lable, .detail{
-		display:inline-block;
-		float: left;
-		max-width:40%;
-		margin: 5px 20px;
-	}
-	.edit{
-		display:inline-block;
-		margin: 5px 20px;
-		width: 100%;
-	}
+	
+	
 </style>
 </html>
