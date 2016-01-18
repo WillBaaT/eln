@@ -16,10 +16,17 @@
 .short{
 	width: 40px;
 }
+.field_with_errors input:after{
+		content:"321654";
+	}
 
 
 @media screen and (max-width: 32em){
-
+.short{
+	height:50px;
+	width:60px;
+	font-size: 30px;
+}
 
 
 }
