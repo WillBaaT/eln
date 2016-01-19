@@ -1,30 +1,36 @@
 class PcrsController < ApplicationController
+
   def index
   	@gene = Gene.all
   	@pcr = Pcr.all
   	if Gene.first.nil?
   		redirect_to new_pcr_path
   	end
-    
   end
 
   def new
     @pcr = Pcr.new
-    @pcr.build_gene #build a blank pcrs form
   end
  
   def create
     @pcr = Pcr.new(pcr_params)
+    
     if  Gene.find_by_name(@pcr.gene.name)
       @pcr.gene = Gene.find(Gene.find_by_name(@pcr.gene.name).id)
-    end
+      end
     if @pcr.save
+      
       redirect_to pcrs_path
     else
       render new_pcr_path
     end
   end
-
+  def genenewpcr
+    
+  end
+  def reload
+    render new_pcr_path
+  end
   def show
   	@pcr = Pcr.find(params[:id])
   end
@@ -55,7 +61,9 @@ class PcrsController < ApplicationController
     end
     redirect_to pcrs_path
   end
-
+def reload
+    render new_pcr_path
+  end
   private
   def pcr_params
       params.require(:pcr).permit(

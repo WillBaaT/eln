@@ -13,21 +13,28 @@
 			<% @gene.each do |g| %>
 			<div class="gene">
 				<%= link_to  :controller => 'pcrs', :action =>'geneshow', :id => g do%>
-				<h2><%= g.name %></h2>
+				<h2><%= g.name %>
+				<span class="genedetail">Details</span>
 				<%end%>
+				<%= link_to  :controller => 'pcrs', :action =>'genenewpcr', :id => g do%>
+				<span class="genenew">New</span>
+				<%end%>
+				</h2>
 				<% g.pcrs.each do |p| %>
-				<div class="pcr">
-					<div class="label">
-					Fragment:	<br>
-					Size:  		<br>
-					</div>
-					<div class="detail">
-					<%=p.fragment_name%><br>
-					<%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
-					<p><%=p.created_at.strftime("%H:%M %D")%></p>
+				<div class="pcrs">
+					<div class="pcr">
+					<span>Fragment:	</span><%=p.fragment_name%><br>
+					<span>Size:		</span> <%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
+					<span>Final vector:	</span><%=p.final_vector%><br>
+					<span>Enzyme :	</span><%=p.enzyme%><br>
+					<span>Machine :	</span><%=p.machine%><br><br>
+					<span>Condition :	</span><%=p.machine%><br>
+					<span><%=p.break%><%=" °C " unless p.product_size.nil?%><%=p.break_t%><%=" min " unless p.product_size.nil?%></span><br>
+
+					<br>
+					<span><%=p.created_at.strftime("%H:%M %D")%></span>
 					</div>
 					<div class="edit">
-					<%= link_to "edit", edit_pcr_path(p) %>
 					<%= link_to "detail", pcr_path(p) %>
 					<%= link_to "delete", pcr_path(p), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
 					</div>
@@ -40,35 +47,5 @@
 		</div>
 	</div>
 </body>
-<style>
-	h2{
-		color: #599ab9;
-	}
-	h2:after{
-		content:"details";
-		font-size: 0.8em;
-		padding-left: 2px;
-		opacity:0;
-		transition: 0.2s;
-		position:relative;
-		right:10px;
-		bottom:2px;
-		color: #768e9d;
-	}
-	h2:hover:after{
-		opacity:1;
-		position:relative;
-		padding-left:15px;
-	}
-	.gene{
-		margin:0 20px;
-		width:300%;
-		white-space: nowrap;
-	}
-	.pcr{
-		border:solid;
-		display: inline-block;
-		width:50%;
-}
-</style>
+
 </html>

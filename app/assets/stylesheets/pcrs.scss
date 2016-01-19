@@ -1,24 +1,60 @@
-// Place all the styles related to the pcrs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 	
 .field_with_errors{
 	padding: 0;
-	width:100px;
-	display:inline;
+	width:100%;
 }
 .field_with_errors input{
   	background-color: #f86558;
 }
-.err{
-	color: #f86558;
-}
+
 .short{
 	width: 40px;
 }
-.field_with_errors input:after{
-		content:"321654";
-	}
+.err{
+	color:#f86558;
+}
+/*#erralert{
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	line-height: 2em;
+	position: fixed;
+	top:50%;
+	left:50%;
+	width:300px;
+	padding-bottom: 30px;
+	margin-top: -200px;
+	margin-left: -150px;
+	z-index: 10;
+	cursor: initial;
+}*/
+
+/*#erralert::after{
+	content:"OK";
+	font-weight: 800;
+	font-size: 1.5em;
+	color:#f86558;
+	width: 20px;
+	position: absolute;
+	bottom:5%;
+	left:50%;
+	margin-left: -10px;
+	cursor: pointer;
+}*/
+
+/*index*/
+.gene h2{
+	font-size: 1.5em;
+	color: #599ab9;
+}
+.gene, .geneshow{
+
+	font-size: 1.2em;
+	margin:0 20px;
+	max-width: 1230px;
+	width:180%;
+	white-space: nowrap;
+	overflow: auto;
+}
 
 
 @media screen and (max-width: 32em){
@@ -27,6 +63,54 @@
 	width:60px;
 	font-size: 30px;
 }
-
+/*index*/
+.gene h2{
+	padding-left: 2px;
+	position:relative;
+	bottom:2px;
+	ransition: all 0.2s;
+}
+.gene h2 .genenew{
+	content:"new";
+	background-color: #599ab9;
+	border-radius: 4px;
+	padding:4px;
+	margin:4px;
+	font-size: 0.5em;
+	color: white;
+	position:absolute;
+	left:25px;
+	width:60px;
+	text-align: center;
+	transition: all 0.2s;
+	opacity:0;
+}
+.gene h2 .genedetail{
+	content:"details";
+	background-color: #599ab9;
+	border-radius: 4px;
+	padding:4px;
+	margin:4px;
+	font-size: 0.5em;
+	color: white;
+	position:absolute;
+	left:25px;
+	width:60px;
+	text-align: center;
+	transition: all 0.2s;
+	opacity:0;
+}
+.gene h2:hover .genenew{
+	opacity:1;
+	left:150px;
+}
+.gene h2:hover .genedetail{
+	opacity:1;
+	left:80px;
+}
+.pcrs{
+	display: inline-block;
+	width:50%;
+}
 
 }

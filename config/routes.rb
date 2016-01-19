@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'genes/:id' => 'pcrs#geneshow'
   get 'genesedit/:id' => 'pcrs#geneedit'
   patch 'genes/:id' => 'pcrs#geneupdate'
+  get 'gene/newpcr' => 'pcrs#genenewpcr'
   resources :ligations
 
   # The priority is based upon order of creation: first created -> highest priority.

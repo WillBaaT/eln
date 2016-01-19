@@ -10,7 +10,7 @@
 			<header class="clearfix">
 				<h1 class="title-current">PCR products</h1>
 			</header>
-			<div class="gene">
+			<div class="pcrshow">
 				<h2><%= @pcr.gene.name %></h2>
 				<div class="pcr">
 				<div class="lable">
@@ -24,7 +24,6 @@
 				</div>
 				<div class="edit">
 					<p><%= link_to "edit", edit_pcr_path(@pcr) %></p>
-					<p><%= link_to "delete", pcr_path(@pcr), :method => :delete %></p>
 					<br><br>	<br><br>
 				</div>
 				</div>
