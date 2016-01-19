@@ -5,6 +5,7 @@ class PcrsController < ApplicationController
   	if Gene.first.nil?
   		redirect_to new_pcr_path
   	end
+    
   end
 
   def new

@@ -5,11 +5,11 @@
 </head>
 <body>
 	<div class="container">
-		<div id="tabs" class="tabs notetabs">
+		<div id="tabs" class="tabs">
 			<header class="clearfix">
 				<h1 class="title-current">PCR products</h1>
 			</header>
-			
+			<div class="content">
 			<% @gene.each do |g| %>
 			<div class="gene">
 				<%= link_to  :controller => 'pcrs', :action =>'geneshow', :id => g do%>
@@ -18,22 +18,24 @@
 				<% g.pcrs.each do |p| %>
 				<div class="pcr">
 					<div class="label">
-						Fragment:	<br>
-						Size:  		<br>
+					Fragment:	<br>
+					Size:  		<br>
 					</div>
 					<div class="detail">
-						<%=p.fragment_name%><br>
-						<%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
-						<p><%=p.created_at.strftime("%H:%M %D")%></p>
+					<%=p.fragment_name%><br>
+					<%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
+					<p><%=p.created_at.strftime("%H:%M %D")%></p>
 					</div>
 					<div class="edit">
-						<%= link_to "edit", edit_pcr_path(p) %>
-						<%= link_to "detail", pcr_path(p) %>
-						<%= link_to "delete", pcr_path(p), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
+					<%= link_to "edit", edit_pcr_path(p) %>
+					<%= link_to "detail", pcr_path(p) %>
+					<%= link_to "delete", pcr_path(p), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
 					</div>
 				</div>
-				<%end%>
-			</div>				
+
+			<%end%>
+			</div>
+			</div>
 			<%end%>
 		</div>
 	</div>
@@ -59,18 +61,14 @@
 		padding-left:15px;
 	}
 	.gene{
-		overflow: auto;
 		margin:0 20px;
 		width:300%;
 		white-space: nowrap;
 	}
 	.pcr{
-		display: inline;
-		left:0px;
-		width:100%;
-	}
-	
-	
-	
+		border:solid;
+		display: inline-block;
+		width:50%;
+}
 </style>
 </html>
