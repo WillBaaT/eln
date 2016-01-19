@@ -28,7 +28,9 @@
     </div>
     <div class="actions"> 
       <%= f.submit "Submit", :class => "submit" %>
-      <%= f.button "Cancel", :type => "reset",  :class => "cancel"%>
+      <%=link_to(:controller=>"functions",:action=>"home") do%>
+      <%= button_to "Cancel", :type => "reset",  :class => "cancel"%>
+      <%end%>
     </div> 
   <%end%>
     <p class = "err_message">
