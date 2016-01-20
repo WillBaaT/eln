@@ -13,14 +13,21 @@
 			<div class="pcrshow">
 				<h2><%= @pcr.gene.gene_name %></h2>
 				<div class="pcr">
-				<div class="lable">
-					<p>Fragment:</p>	<br>
-					<p>Size:  	</p>	<br>
-				</div>
 				<div class="detail">
-					<p><%=@pcr.fragment_name%></p><br>
-					<p><%=@pcr.product_size%><%=" bp" unless @pcr.product_size.nil?%></p><br>
-					<p><%=@pcr.created_at.strftime("%H:%M %D")%></p>
+					<span>Fragment: </span></span><%=@pcr.fragment_name%></span><br>
+					<span></span><span><%=@pcr.product_size%><%=" bp" unless @pcr.product_size.nil?%><span><br>
+					<span>Machine: </span><span><%=@pcr.machine%></span><br>
+					<span>Polymerase: </span><span><%=@pcr.enzyme%></span><br>
+					<span></span><span><%=@pcr.break%></span><br>
+					<span></span><span><%=@pcr.break_t%></span><br>
+					<span></span><span><%=@pcr.denature%></span><br>
+					<span></span><span><%=@pcr.denature_t%></span><br>
+					<span></span><span><%=@pcr.elongation%></span><br>
+					<span></span><span><%=@pcr.elongation_t%></span><br>
+					<span></span><span><%=@pcr.polya%></span><br>
+					<span></span><span><%=@pcr.polya_t%></span><br>
+					<span></span><span><%=@pcr.cycles%></span><br>
+					<span></span><span><%=@pcr.created_at.strftime("%H:%M %D")%></p>
 				</div>
 				<div class="edit">
 					<p><%= link_to "edit", edit_pcr_path(@pcr) %></p>

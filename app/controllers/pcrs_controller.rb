@@ -11,12 +11,8 @@ class PcrsController < ApplicationController
   def new
     @pcr = Pcr.new
   end
-  def genenewpcr
-    @pcr = Pcr.new
-    @pcr.gene = Gene.find(params[:id])
-  end
   def create
-    @pcr = Pcr.create(pcr_params)
+    @pcr = Pcr.new(pcr_params)
     if  Gene.find_by_gene_name(@pcr.gene.gene_name)
       @pcr.gene = Gene.find(Gene.find_by_gene_name(@pcr.gene.gene_name).id)
       end
@@ -27,14 +23,8 @@ class PcrsController < ApplicationController
       render new_pcr_path
     end
   end
-  def reload
-    render new_pcr_path
-  end
   def show
   	@pcr = Pcr.find(params[:id])
-  end
-  def geneshow
-    @gene = Gene.find(params[:id])
   end
   def edit
     @pcr = Pcr.find(params[:id])
@@ -66,6 +56,7 @@ def reload
   private
   def pcr_params
       params.require(:pcr).permit(
+      :id,
       :gene_id,
       :fragment_name, 
       :product_size,

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts
 
   get 'molecular' => 'functions#clones'
+  resources :genes
   resources :pcrs
   get 'genes' => 'pcrs#geneshow'
   get 'genesedit/:id' => 'pcrs#geneedit'
