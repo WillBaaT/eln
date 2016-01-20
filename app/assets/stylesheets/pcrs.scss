@@ -51,20 +51,14 @@
 	font-size: 1.2em;
 	margin:0 20px;
 	max-width: 1230px;
-	width:180%;
+	width:200%;
 	white-space: nowrap;
 	overflow: auto;
 }
 
-
-@media screen and (max-width: 32em){
-.short{
-	height:50px;
-	width:60px;
-	font-size: 30px;
-}
 /*index*/
 .gene h2{
+	color: #599ab9;
 	padding-left: 2px;
 	position:relative;
 	bottom:2px;
@@ -112,5 +106,12 @@
 	display: inline-block;
 	width:50%;
 }
+@media screen and (max-width: 32em){
+.short{
+	height:50px;
+	width:60px;
+	font-size: 30px;
+}
+
 
 }

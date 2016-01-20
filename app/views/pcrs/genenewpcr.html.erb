@@ -10,10 +10,17 @@
 					<h1 class="title-current">Fragment Cloning</h1>
 				</header>
 				<%= form_for @pcr do |pf| %>
-					<%= render :partial => 'form', :locals => { :pf => pf } %>
+					<div class="stepback">
+					<h2>About the Gene</h2><br>
+							<%= pf.fields_for :gene do |gf| %>
+							<%= gf.label :number,"Gene ID"%>
+							<%= gf.text_field :number, :placeholder => "At1g01010",:disabled=>"true" %><br><br>
+							<%= gf.label :name,"Gene Name" %>
+							<%= gf.text_field :name, :class=>"genename",:disabled=>"true" %><br><br><br>
+							<%end%> 
+					</div>
+					<%= render :partial => 'pcrform', :locals => { :pf => pf } %>
 					<%= pf.submit "Submit", :class => "submit" %>
-					
-					
 					<% @pcr.errors.full_messages.each do |err| %>
 						<ul id="erralert" style="list-style-type:disc"><li class="err"><%=err%></li></ul>
 					<%end%>

@@ -11,7 +11,8 @@
 				</header>
 				<%@pcr.build_gene %>
 				<%= form_for @pcr do |pf| %>
-					<%= render :partial => 'form', :locals => { :pf => pf } %>
+					<%= render :partial => 'geneform', :locals => { :pf => pf } %>
+					<%= render :partial => 'pcrform', :locals => { :pf => pf } %>
 					<%= pf.submit "Submit", :class => "submit" %>
 					
 					

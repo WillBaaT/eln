@@ -11,10 +11,15 @@ class PcrsController < ApplicationController
   def new
     @pcr = Pcr.new
   end
- 
+  def genenewpcr
+    @pcr = Pcr.new
+    @pcr.gene = Gene.find(params[:id])
+  end
   def create
     @pcr = Pcr.new(pcr_params)
-    
+    if params[:id]
+      @pcr.gene = Gene.find(params[:id])
+    end
     if  Gene.find_by_name(@pcr.gene.name)
       @pcr.gene = Gene.find(Gene.find_by_name(@pcr.gene.name).id)
       end
@@ -24,9 +29,6 @@ class PcrsController < ApplicationController
     else
       render new_pcr_path
     end
-  end
-  def genenewpcr
-    
   end
   def reload
     render new_pcr_path
