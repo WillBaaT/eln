@@ -10,7 +10,7 @@
 				<h1 class="title-current">Gene</h1>
 			</header>
 			<div class="gene">
-				<h2><%= @gene.name %></h2>
+				<h2><%= @gene.gene_name %></h2>
 				<div class="pcr">
 				<div class="lable">
 					<p>ID: <%= @gene.number %>			</p>	<br>
@@ -22,7 +22,6 @@
 				</div>
 				<div class="edit">
 					<p><%= link_to "edit", :controller => 'pcrs', :id => @gene.id, :action =>'geneedit' %></p>
-					<p><%= link_to "delete", :controller => 'pcrs', :action =>'geneshow', :id => @gene.id, :method => :delete %></p>
 					<br><br>	<br><br>
 				</div>
 				</div>

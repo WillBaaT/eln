@@ -16,12 +16,9 @@ class PcrsController < ApplicationController
     @pcr.gene = Gene.find(params[:id])
   end
   def create
-    @pcr = Pcr.new(pcr_params)
-    if params[:id]
-      @pcr.gene = Gene.find(params[:id])
-    end
-    if  Gene.find_by_name(@pcr.gene.name)
-      @pcr.gene = Gene.find(Gene.find_by_name(@pcr.gene.name).id)
+    @pcr = Pcr.create(pcr_params)
+    if  Gene.find_by_gene_name(@pcr.gene.gene_name)
+      @pcr.gene = Gene.find(Gene.find_by_gene_name(@pcr.gene.gene_name).id)
       end
     if @pcr.save
       
@@ -90,7 +87,7 @@ def reload
       :id,
       :species,
       :number,
-      :name,
+      :gene_name,
       :size,
       :_destroy]
   )
@@ -100,7 +97,7 @@ def reload
       :id,
       :species,
       :number,
-      :name,
+      :gene_name,
       :size)
   end
 end

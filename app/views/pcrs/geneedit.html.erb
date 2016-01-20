@@ -14,8 +14,8 @@
 					<h2>About the Gene</h2><br>
 							<%= pf.label :number,"Gene ID"%>
 							<%= pf.text_field :number, :placeholder => "At1g01010" %><br><br>
-							<%= pf.label :name,"Gene Name" %>
-							<%= pf.text_field :name, :class=>"genename" %><br><br><br>
+							<%= pf.label :gene_name,"Gene Name" %>
+							<%= pf.text_field :gene_name, :class=>"genename" %><br><br><br>
 					</div>
 					<%= pf.submit "Update", :class => "submit" %>
 					<% @gene.errors.full_messages.each do |err| %>

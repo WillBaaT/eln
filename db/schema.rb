@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160119185049) do
   create_table "genes", force: :cascade do |t|
     t.string   "species"
     t.string   "number"
-    t.string   "name"
+    t.string   "gene_name"
     t.string   "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

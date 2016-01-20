@@ -1,21 +1,17 @@
 class Pcr < ActiveRecord::Base
 	belongs_to :gene
-	validates_presence_of :fragment_name, :gene
-	validates_numericality_of :product_size, :only_integer => true
-	accepts_nested_attributes_for :gene, :allow_destroy => true, :reject_if => :all_blank
+	validates_presence_of :fragment_name
+	# validates_numericality_of :product_size, :only_integer => true
+	accepts_nested_attributes_for :gene, :allow_destroy => true, :reject_if => proc { |a| 
+     a['gene_name'].blank? }
 
-
-	before_save :check_fragment_name_serial_upcase
+     before_save :converse_k_to_1000
+private
   
-
-  private
-  
-  def check_fragment_name_serial_upcase
-    if self.fragment_name_changed?
-      self.fragment_name = self.fragment_name.upcase
+  def converse_k_to_1000
+    if  /k/ =~ self.product_size
+      self.product_size = self.product_size.sub("k","000")
     end
   end
-
-
 end
 

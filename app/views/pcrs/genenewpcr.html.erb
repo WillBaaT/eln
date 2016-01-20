@@ -11,12 +11,12 @@
 				</header>
 				<%= form_for @pcr do |pf| %>
 					<div class="stepback">
-					<h2>About the Gene</h2><br>
+					<h2>About the Gene</h2><%=@pcr.gene.id%><%=@pcr.id%><br>
 							<%= pf.fields_for :gene do |gf| %>
 							<%= gf.label :number,"Gene ID"%>
 							<%= gf.text_field :number, :placeholder => "At1g01010",:disabled=>"true" %><br><br>
-							<%= gf.label :name,"Gene Name" %>
-							<%= gf.text_field :name, :class=>"genename",:disabled=>"true" %><br><br><br>
+							<%= gf.label :gene_name,"Gene Name" %>
+							<%= gf.text_field :gene_name, :class=>"genename",:disabled=>"true" %><br><br><br>
 							<%end%> 
 					</div>
 					<%= render :partial => 'pcrform', :locals => { :pf => pf } %>
