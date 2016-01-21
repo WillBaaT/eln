@@ -17,7 +17,6 @@
 	width:40%;
 	max-width: 300px;
 	margin: 0 5px;
-
 }
 .submit{
 	border-radius: 4px;
@@ -40,4 +39,7 @@
 }
 .cancel:hover {
     background-color: #d64336;
+}
+.err_message{
+	color: #f86558;
 }

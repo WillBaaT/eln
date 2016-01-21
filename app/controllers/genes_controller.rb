@@ -1,5 +1,4 @@
 class GenesController < ApplicationController
-
   def index
     @gene = Gene.all
     @pcr = Pcr.all
@@ -7,7 +6,6 @@ class GenesController < ApplicationController
       redirect_to new_gene_path
     end
   end
-
   def new
     @gene = Gene.new
     @gene.pcrs.build
@@ -29,30 +27,13 @@ class GenesController < ApplicationController
   def edit
     @gene = Gene.find(params[:id])
   end
-  def geneedit
-    @gene = Gene.find(params[:id])
-  end
   def update
     @gene = Gene.find(params[:id])
     @gene.update(gene_params)
     redirect_to gene_path(@gene)
   end
-  def geneupdate
-    @gene = Gene.find(params[:id])
-    @gene.update(gene_params)
-    redirect_to :action => :geneshow, :id => @gene
-  end
-  def destroy
-    @pcr = Pcr.find(params[:id])
-    @pcr.destroy
-    if @pcr.gene.pcrs.empty?
-      @pcr.gene.destroy
-    end
-    redirect_to pcrs_path
-  end
-def reload
-    render new_pcr_path
-  end
+  
+
   private
   def gene_params
     params.require(:gene).permit(

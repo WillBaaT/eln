@@ -11,38 +11,30 @@
 			</header>
 			<div class="content">
 			<% @gene.each do |g| %>
-			<div class="gene">
-				
-				<h2><%= g.gene_name %>
-				<%= link_to  gene_path(g) do%>
-				<span class="genedetail">Details</span>
-				<%end%>
-				<%= link_to  :controller => 'pcrs', :action =>'genenewpcr', :id => g do%>
-				<span class="genenew">New</span>
-				<%end%>
-				</h2>
-				<% g.pcrs.each do |p| %>
-				<div class="pcrs">
-					<div class="pcr">
-					<span>Fragment:	</span><%=p.fragment_name%><br>
-					<span>Size:		</span> <%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
-					<span>Final vector:	</span><%=p.final_vector%><br>
-					<span>Enzyme :	</span><%=p.enzyme%><br>
-					<span>Machine :	</span><%=p.machine%><br><br>
-					<span>Condition :	</span><%=p.machine%><br>
-					<span><%=p.break%><%=" °C " unless p.break_t.nil?%><%=p.break%><%=" min " unless p.break_t.nil?%></span><br>
-
-					<br>
-					<span><%=p.created_at.strftime("%H:%M %D")%></span>
+				<div class="gene">
+					<h2><%= g.gene_name %>
+					<%= link_to  gene_path(g) do%>
+					<span class="genedetail">Details</span>
+					<%end%>
+					<%= link_to  new_gene_pcr_path(g) do%>
+					<span class="genenew">New</span>
+					<%end%>
+					</h2>
+					<% g.pcrs.each do |p| %>
+					<div class="pcrs">
+						<div class="pcr">
+						<span class="label">Fragment:	</span><span><%=p.fragment_name%></span><br>
+						<span class="label">Size:		</span><span><%=p.product_size%><%=" bp" unless p.product_size.nil?%></span><br>
+						<span class="label">Final vector:</span><span><%=p.final_vector%></span><br><br><br>
+						<span class="time"><%=p.created_at.strftime("%H:%M %D")%></span>
+						</div>
+						<div class="edit">
+						<%= link_to "DETAIL", gene_pcr_path(p.gene, p)%>
+						<%= link_to "DELETE", gene_pcr_path(p.gene, p), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
+						</div>
 					</div>
-					<div class="edit">
-					<%= link_to "detail", pcr_path(p) %>
-					<%= link_to "delete", pcr_path(p), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
-					</div>
+				<%end%>
 				</div>
-
-			<%end%>
-			</div>
 			</div>
 			<%end%>
 		</div>

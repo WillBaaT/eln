@@ -1,9 +1,0 @@
-<div class="stepback">
-<h2>About the Gene</h2><br>
-		<%= pf.fields_for :gene do |gf| %>
-		<%= gf.label :number,"Gene ID"%>
-		<%= gf.text_field :number, :placeholder => "At1g01010" %><br><br>
-		<%= gf.label :gene_name,"Gene Name" %>
-		<%= gf.text_field :gene_name, :class=>"genename" %><br><br><br>
-		<%end%> 
-</div>

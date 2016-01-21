@@ -1,60 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>CHYLab - Experimental Note</title>
 </head>
 <body>
 	<div class="container">
-		<div  id="tabs" class="tabs">
+		<div id="tabs" class="tabs">
 			<header class="clearfix">
 				<h1 class="title-current">PCR products</h1>
 			</header>
-			<div class="pcrshow">
+			<div class="content">
+				<div class="gene">
 				<h2><%= @pcr.gene.gene_name %></h2>
-				<div class="pcr">
-				<div class="detail">
-					<span>Fragment: </span></span><%=@pcr.fragment_name%></span><br>
-					<span></span><span><%=@pcr.product_size%><%=" bp" unless @pcr.product_size.nil?%><span><br>
-					<span>Machine: </span><span><%=@pcr.machine%></span><br>
-					<span>Polymerase: </span><span><%=@pcr.enzyme%></span><br>
-					<span></span><span><%=@pcr.break%></span><br>
-					<span></span><span><%=@pcr.break_t%></span><br>
-					<span></span><span><%=@pcr.denature%></span><br>
-					<span></span><span><%=@pcr.denature_t%></span><br>
-					<span></span><span><%=@pcr.elongation%></span><br>
-					<span></span><span><%=@pcr.elongation_t%></span><br>
-					<span></span><span><%=@pcr.polya%></span><br>
-					<span></span><span><%=@pcr.polya_t%></span><br>
-					<span></span><span><%=@pcr.cycles%></span><br>
-					<span></span><span><%=@pcr.created_at.strftime("%H:%M %D")%></p>
-				</div>
-				<div class="edit">
-					<p><%= link_to "edit", edit_pcr_path(@pcr) %></p>
-					<br><br>	<br><br>
-				</div>
+					<div class="detail">
+						<span class="label">Fragment: </span><span><%=@pcr.fragment_name%></span><br>
+						<span class="label">Size: </span><span><%=@pcr.product_size%><%=" bp" unless @pcr.product_size.nil?%></span><br>
+						<span class="label">Machine: </span><span><%=@pcr.machine%></span><br>
+						<span class="label">Polymerase: </span><span><%=@pcr.enzyme%></span><br>
+						<span></span><span><%=@pcr.break%></span><br>
+						<span></span><span><%=@pcr.break_t%></span><br>
+						<span></span><span><%=@pcr.denature%></span><br>
+						<span></span><span><%=@pcr.denature_t%></span><br>
+						<span></span><span><%=@pcr.elongation%></span><br>
+						<span></span><span><%=@pcr.elongation_t%></span><br>
+						<span></span><span><%=@pcr.polya%></span><br>
+						<span></span><span><%=@pcr.polya_t%></span><br>
+						<span></span><span><%=@pcr.cycles%></span><br>
+						<span></span><span><%=@pcr.created_at.strftime("%H:%M %D")%></span>
+						<div class="edit">
+						<%= link_to "EDIT", edit_gene_pcr_path(@pcr.gene, @pcr)%>
+						<%= link_to "DELETE", gene_pcr_path(@pcr.gene, @pcr.gene), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
+						</div>
+					</div>
 				</div>
 			</div>
-			<p><%= link_to 'Back to index', pcrs_path %></p>
 		</div>
 	</div>
 </body>
 <style>
-	.gene, .pcr{
-		overflow: auto;
-		margin:0 20px;
-	}
-	
-	.lable, .detail{
-		display:inline-block;
-		float: left;
-		max-width:40%;
-		margin: 5px 20px;
-	}
-	.edit{
-		display:inline-block;
-		margin: 5px 20px;
-		width: 70%;
-	}
+
 </style>
 </html>

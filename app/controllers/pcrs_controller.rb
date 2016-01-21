@@ -1,55 +1,47 @@
 class PcrsController < ApplicationController
 
-  def index
-  	@gene = Gene.all
-  	@pcr = Pcr.all
-  	if Gene.first.nil?
-  		redirect_to new_pcr_path
-  	end
-  end
+
+
+
+
+
 
   def new
-    @pcr = Pcr.new
+    @gene = Gene.find(params[:gene_id])
+    @pcr = @gene.pcrs
   end
   def create
-    @pcr = Pcr.new(pcr_params)
-    if  Gene.find_by_gene_name(@pcr.gene.gene_name)
-      @pcr.gene = Gene.find(Gene.find_by_gene_name(@pcr.gene.gene_name).id)
-      end
-    if @pcr.save
-      
-      redirect_to pcrs_path
-    else
-      render new_pcr_path
-    end
+    @gene = Gene.find(params[:gene_id])
+    @pcr = @gene.pcrs.create(pcr_params)
+    # if @pcr.save
+      redirect_to genes_path
+    # else
+    #   render new_gene_pcr_path(@gene)
+    # end
   end
   def show
-  	@pcr = Pcr.find(params[:id])
-  end
-  def edit
+  	@gene = Gene.find(params[:gene_id])
     @pcr = Pcr.find(params[:id])
   end
-  def geneedit
-    @gene = Gene.find(params[:id])
+  def edit
+    @gene = Gene.find(params[:gene_id])
+    @pcr = Pcr.find(params[:id])
   end
   def update
     @pcr = Pcr.find(params[:id])
     @pcr.update(pcr_params)
     redirect_to pcr_path(@pcr)
   end
-  def geneupdate
-    @gene = Gene.find(params[:id])
-    @gene.update(gene_params)
-    redirect_to :action => :geneshow, :id => @gene
-  end
   def destroy
-    @pcr = Pcr.find(params[:id])
+    @gene = Gene.find(params[:gene_id])
+    @pcr = @gene.pcrs.find(params[:id])
     @pcr.destroy
-    if @pcr.gene.pcrs.empty?
-      @pcr.gene.destroy
+    if @gene.pcrs.empty?
+      @gene.destroy
     end
-    redirect_to pcrs_path
+    redirect_to genes_path
   end
+  
 def reload
     render new_pcr_path
   end
@@ -73,22 +65,7 @@ def reload
       :elongation_t,
       :polya,
       :polya_t,
-      :cycles,
-      :gene_attributes => [
-      :id,
-      :species,
-      :number,
-      :gene_name,
-      :size,
-      :_destroy]
+      :cycles
   )
-  end
-  def gene_params
-    params.require(:gene).permit(
-      :id,
-      :species,
-      :number,
-      :gene_name,
-      :size)
   end
 end
