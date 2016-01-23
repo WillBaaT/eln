@@ -12,10 +12,9 @@
     <h2>PCR condition</h2><br>
 	    	<%= pf.label :enzyme,"Polymerase" %>
 	        <%= pf.text_field :enzyme %><br><br>
-	        <% pf.text_field :gene_id %>
 	    	<%= pf.label :machine %> 
-	        <%= pf.text_field :enzyme %><br><br><br>
-	<div id="temp">
+	        <%= pf.text_field :machine %><br><br><br>
+	<div class="temp">
 	        <%= pf.number_field :break, :class => "short",					in:95..100%> °C
 	        <%= pf.number_field :break_t, :class => "short",				in:1..15%> min<br><br>
 	        <%= pf.number_field :denature, :class => "short",				in:95..100%> °C
@@ -26,8 +25,9 @@
 	        <%= pf.number_field :elongation_t, :class => "short",			in:1..10%> min<br><br>
 	        <%= pf.number_field :polya, :class => "short",					in:65..75%> °C
 	        <%= pf.number_field :polya_t, :class => "short",				in:1..10%> min<br><br>
-	        <%= pf.number_field :cycles, :class => "short",:id => "cycles",	in:20..45%>
-	        <%= pf.label :cycles, :id => "cyclest" %>
+	        <div class="cycles">
+	        <%= pf.number_field :cycles, :class => "short",	in:20..45%> Cycles
+	        </div>
 	    <%end%>
 	</div>
 </div>

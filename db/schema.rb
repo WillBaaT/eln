@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160119185049) do
     t.string   "number"
     t.string   "gene_name"
     t.string   "size"
+    t.text     "sequence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

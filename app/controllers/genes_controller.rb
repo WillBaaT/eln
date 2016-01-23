@@ -42,6 +42,7 @@ class GenesController < ApplicationController
       :number,
       :gene_name,
       :size,
+      :sequence,
       :pcrs_attributes => [
       :id,
       :gene_id,

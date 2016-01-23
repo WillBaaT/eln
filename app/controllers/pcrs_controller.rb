@@ -30,7 +30,7 @@ class PcrsController < ApplicationController
   def update
     @pcr = Pcr.find(params[:id])
     @pcr.update(pcr_params)
-    redirect_to pcr_path(@pcr)
+    redirect_to gene_pcr_path(@pcr.gene, @pcr)
   end
   def destroy
     @gene = Gene.find(params[:gene_id])

@@ -18,6 +18,9 @@
 							<%= gf.text_field :number, :class=>"genename" %><br><br><br>
 							<%= gf.label :size %>
 							<%= gf.text_field :size, :placeholder => "1000" %><br><br>
+							<%= gf.label :sequence %>
+							<%= gf.text_area :sequence, :class=>"genesequence"%><br><br>
+
 					</div>
 					<%= gf.submit "Submit", :class => "submit" %>
 					<% @gene.errors.full_messages.each do |err| %>

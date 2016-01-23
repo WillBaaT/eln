@@ -48,18 +48,26 @@ form{
 label, .label{
 	display: inline-block;
 	text-align: left;
-	width: 30%;
+	width: 40%;
+
 }
 .label{
-	line-height: 30px;
-	width: 40%;
+	line-height: 40px;
 }
-input[type="text_field"]{
+input[type="text"]{
 	border-radius: 3px;
 	border: 1px solid #599ab9;
 	display: inline-block;
 	text-align: left;
 	width: 40%;
+}
+.genesequence{
+	border-radius: 3px;
+	border: 1px solid #599ab9;
+	display: inline-block;
+	text-align: left;
+	width: 40%;
+	height:100px;
 }
 .time{
 	display: inline-block;
@@ -87,7 +95,18 @@ input[type="text_field"]{
 	margin:5px auto;
 	position: absolute;
 	right:0px;
-}	
+}
+.temp{
+	width:70%;
+	padding-left: 30%;
+	position: relative;
+
+}
+.cycles{
+	position: absolute;
+	top: calc(50% - 22px);
+	right:0px;
+}
 /*index*/
 .gene, .geneshow{
 	margin:0 auto;
@@ -115,7 +134,7 @@ input[type="text_field"]{
 	left:25px;
 	width:60px;
 	text-align: center;
-	transition-duration: all 0.2s;
+	transition: all 0.2s;
 	opacity:0;
 }
 .gene h2 .genedetail{
@@ -150,6 +169,7 @@ input[type="text_field"]{
 .detail{
 	width:100%;
 }
+
 @media screen and (max-width: 32em){
 /*tables*/
 form{
@@ -159,16 +179,32 @@ label{
 	display: block;
 	width: 50%;
 }
-input[type="text_field"]{
+input[type="text"]{
 	font-size: 1.5em;
 	width: 100%;
 }
-
+.gene h2 .genenew{
+	opacity:1;
+	left:150px;
+}
+.gene h2 .genedetail{
+	opacity:1;
+	left:80px;
+}
 .short{
-	height:50px;
-	width:60px;
+	height:45px;
+	width:55px;
 	font-size: 30px;
 }
-
+.temp{
+	width:100%;
+	padding-left: 0%;
+	position: relative;
+}
+.cycles{
+	position: absolute;
+	top: calc(50% - 32px);
+	right:0px;
+}
 
 }

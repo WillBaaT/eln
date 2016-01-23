@@ -15,21 +15,23 @@
 					<div class="detail">
 						<span class="label">Fragment: </span><span><%=@pcr.fragment_name%></span><br>
 						<span class="label">Size: </span><span><%=@pcr.product_size%><%=" bp" unless @pcr.product_size.nil?%></span><br>
-						<span class="label">Machine: </span><span><%=@pcr.machine%></span><br>
 						<span class="label">Polymerase: </span><span><%=@pcr.enzyme%></span><br>
-						<span></span><span><%=@pcr.break%></span><br>
-						<span></span><span><%=@pcr.break_t%></span><br>
-						<span></span><span><%=@pcr.denature%></span><br>
-						<span></span><span><%=@pcr.denature_t%></span><br>
-						<span></span><span><%=@pcr.elongation%></span><br>
-						<span></span><span><%=@pcr.elongation_t%></span><br>
-						<span></span><span><%=@pcr.polya%></span><br>
-						<span></span><span><%=@pcr.polya_t%></span><br>
-						<span></span><span><%=@pcr.cycles%></span><br>
-						<span></span><span><%=@pcr.created_at.strftime("%H:%M %D")%></span>
+						<span class="label">Machine: </span><span><%=@pcr.machine%></span><br><br>
+						<span><%=@pcr.break%> °C <%=@pcr.break_t%> min</span><br>
+						<br>
+						<span><%=@pcr.denature%> °C <%=@pcr.denature_t%> min</span><br>
+						<br>
+						<span><%=@pcr.annealing%> °C <%=@pcr.annealing_t%> min ------ <%=@pcr.cycles%> cycles min</span><br>
+						<br>
+						<span><%=@pcr.elongation%> °C <%=@pcr.elongation_t%> min</span><br>
+						<br>
+						<span><%=@pcr.polya%> °C <%=@pcr.polya_t%> min</span><br>
+						<br><br>
+						<span><%=@pcr.created_at.strftime("%H:%M %D")%></span>
 						<div class="edit">
 						<%= link_to "EDIT", edit_gene_pcr_path(@pcr.gene, @pcr)%>
-						<%= link_to "DELETE", gene_pcr_path(@pcr.gene, @pcr.gene), :method => :delete, :data => { :confirm => "Are you sure?" } %><br><br>	<br><br>
+						<%= link_to "DELETE", gene_pcr_path(@pcr.gene, @pcr.gene), :method => :delete, :data => { :confirm => "Are you sure?" } %>
+						<%= link_to "BACK", genes_path %><br><br>	<br><br>
 						</div>
 					</div>
 				</div>
